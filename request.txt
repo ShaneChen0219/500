@@ -1,0 +1,8 @@
+bs4
+requests
+datetime
+jsons
+numpy
+pandas
+selenium
+times
