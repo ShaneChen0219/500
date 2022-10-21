@@ -23,7 +23,9 @@ class Stock:
          # Banned from the website
         driver = webdriver.Chrome(ChromeDriverManager().install())
         driver.get(self.url)
-
+        
+        sel = Select(driver.find_element_by_xpath("//select"))
+        sel.select_by_value("Infinity")
         #timefilter = Select(driver.find_elements(By.CLASS_NAME,"select"))
         # timefilter.select_by_value("Infinity")
 
