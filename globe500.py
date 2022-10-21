@@ -30,11 +30,11 @@ class Stock:
         bs4_html = BeautifulSoup(driver.page_source, "html.parser") #爬蟲常用套件BeautifulSoup 把HTML讀成Dictionary(parameter, 原始格式)
         # # find the result box
         result = bs4_html.find(id="__nuxt")
-        tbody = result.find_all("tbody")
+        tbody = result.find("tbody")
         stock_row = tbody.find_all("tr")
         for item in stock_row:
             items = item.find_all("td")
-            stock_name = items[3].find("a").text
+            stock_name = items[2].find("span").text
             self.record_str.append([stock_name])
         return self.record_str
         
