@@ -24,7 +24,7 @@ class Stock:
         driver = webdriver.Chrome(ChromeDriverManager().install())
         driver.get(self.url)
         
-        sel = Select(driver.find_element_by_xpath("//select"))
+        sel = Select(driver.find_element(By.XPATH,"//select"))
         sel.select_by_value("Infinity")
         #timefilter = Select(driver.find_elements(By.CLASS_NAME,"select"))
         # timefilter.select_by_value("Infinity")
@@ -36,8 +36,9 @@ class Stock:
         stock_row = tbody.find_all("tr")
         for item in stock_row:
             items = item.find_all("td")
-            stock_name = items[2].find("span").text
-            self.record_str.append([stock_name])
+            stock_name = items[3].find("a").text
+            stock_name1 = stock_name.replace("\n","").replace(" ","")
+            self.record_str.append(stock_name1)
         return self.record_str
         
 if __name__ == "__main__":
